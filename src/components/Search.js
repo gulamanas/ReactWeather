@@ -6,7 +6,7 @@ const base_url = 'https://api.openweathermap.org/data/2.5/';
 
 function Search() {
     const [query, setQuery] = useState('');
-    const [weather, setWeather] = useState({})
+    const [weather, setWeather] = useState({});
 
     const search = (e) => {
         if (e.key === 'Enter') {
@@ -15,13 +15,13 @@ function Search() {
                 .then(result => {
                     setWeather(result)
                     setQuery('')
-                    console.log(result)
+                    // console.log(result)
                 })
         }
-    }
+    };
 
     return (
-        <div className='text-center mt-3'>
+        <div className='inline-flex items-center flex-col w-full mt-7'>
             <input
                 type="text"
                 name=""
@@ -29,26 +29,39 @@ function Search() {
                 onChange={e => setQuery(e.target.value)}
                 value={query}
                 onKeyDown={search}
-                placeholder='Search'
-                className='px-3 py-3 bg-yellow-400 text-black placeholder:text-black rounded'
+                placeholder='Search city...'
+                className='px-3 py-3 bg-yellow-400 text-black placeholder:text-black rounded w-1/2'
             />
-            <button className='px-5 py-3 bg-red-500 rounded text-white' type='submit'>Search</button>
 
-            {(typeof weather.main != 'undefined') ? (
-                <div >
+            {(typeof weather.main !== 'undefined') ? (
+                <div className='mt-8 text-center'>
 
-                    <div>{weather.name}, {weather.sys.country}</div>
-                    <div>{weather.main.temp}</div>
-                    <div>{weather.weather[0].main}</div>
-                    <div>{weather.main.temp_max} / {weather.main.temp_min}</div>
+                    <div className='text-4xl font-semibold'>
+                        {weather.name}, {weather.sys.country}
+                    </div>
+                    <div className='text-3xl font-medium'>
+                        {weather.weather[0].main}
+                    </div>
+                    <div className='text-7xl text-white my-1 font-bold rounded p-3 bg-slate-600'>
+                        {weather.main.temp} &#176;C
+                    </div>
+                    <div>
+                        <span className='mr-5' >
+                            {weather.wind.speed}km/h
+                        </span>
+                        <span>
+                            {weather.main.humidity}
+                        </span>
+                    </div>
+                    <div className='text-3xl font-medium'>
+                        {weather.main.temp_max} &#176;C / {weather.main.temp_min} &#176;C
+                    </div>
 
                 </div>
             ) : ('')}
-
-
 
         </div>
     )
 }
 
-export default Search
+export default Search;
