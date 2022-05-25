@@ -1,14 +1,15 @@
 // import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+// import api_key from './request'
 
-const api_key = process.env.REACT_APP_API_KEY;
-const base_url = 'https://api.openweathermap.org/data/2.5/';
+let api_key = process.env.REACT_APP_API_KEY;
+let base_url = 'https://api.openweathermap.org/data/2.5/';
 
 function Search() {
-    const [query, setQuery] = useState('');
-    const [weather, setWeather] = useState({});
+    let [query, setQuery] = useState('');
+    let [weather, setWeather] = useState({});
 
-    const search = (e) => {
+    let search = (e) => {
         if (e.key === 'Enter') {
             fetch(`${base_url}weather?q=${query}&units=metric&APPID=${api_key}`)
                 .then(res => res.json())
@@ -42,7 +43,7 @@ function Search() {
                     <div className='text-3xl font-medium'>
                         {weather.weather[0].main}
                     </div>
-                    <div className='text-7xl text-white my-1 font-bold rounded p-3 bg-slate-600'>
+                    <div className='text-7xl text-white my-1 font-bold rounded-xl px-8 py-4 bg-slate-600'>
                         {weather.main.temp} &#176;C
                     </div>
                     <div>
