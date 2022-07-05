@@ -1,6 +1,6 @@
 // import axios from 'axios';
 import React, { useState } from 'react';
-// import api_key from './request'
+import { Wind, Droplet } from 'react-feather';
 
 let api_key = process.env.REACT_APP_API_KEY;
 let base_url = 'https://api.openweathermap.org/data/2.5/';
@@ -46,12 +46,12 @@ function Search() {
                     <div className='text-7xl text-white my-1 font-bold rounded-xl px-8 py-4 bg-slate-600'>
                         {weather.main.temp} &#176;C
                     </div>
-                    <div>
-                        <span className='mr-5' >
-                            {weather.wind.speed}km/h
+                    <div className='flex justify-around'>
+                        <span className='flex'>
+                            <Wind />&nbsp;{weather.wind.speed}km/h
                         </span>
-                        <span>
-                            {weather.main.humidity}
+                        <span className='flex'>
+                            <Droplet />&nbsp;{weather.main.humidity}
                         </span>
                     </div>
                     <div className='text-3xl font-medium'>
