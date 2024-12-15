@@ -9,7 +9,7 @@ function City({ fetchUrl }) {
         async function fetchData() {
             const request = await axios.get(fetchUrl);
             setCity(request.data)
-            console.log(request.data)
+            // console.log(request.data)
             // return request;
         }
         fetchData()

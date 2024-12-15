@@ -16,8 +16,12 @@ function Search() {
                 .then(result => {
                     setWeather(result)
                     setQuery('')
-                    // console.log(result)
+                    console.log(result)
                 })
+                .catch(error => {
+                    console.log('error', error)
+                })
+
         }
     };
 
